@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookCover from '../components/Book/BookCover.astro'
+import BookPages from '../components/Book/BookPages.astro'
+import Candle from "../components/Candle.astro";
+import Desk from "../components/Desk.astro";
+---
+
+<Layout>
+	<Candle />
+	<Desk>
+		<BookCover>
+			<BookPages />
+		</BookCover>
+	</Desk>
+</Layout>

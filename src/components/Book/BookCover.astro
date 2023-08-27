@@ -1,0 +1,46 @@
+<div class="cover">
+    <i class='bx bx-chevron-left'></i>
+    <slot />
+    <span class="separator"></span>
+    <i class='bx bx-chevron-right'></i>
+</div>
+
+<style>
+    :root {
+        --offset: 8rem;
+    }
+
+    .cover {
+        position: relative;
+        height: calc(100vh - var(--offset));
+        width: calc(100vw - var(--offset) * 2);
+        translate: calc(var(--offset) + 20px) 2rem;
+        background-color: #482003;
+        border-radius: 2.4vmin;
+    }
+
+    .cover .bx {
+        position: absolute;
+        top: 50%;
+        font-size: 2rem;
+        color: #fff;
+        z-index: 999;
+    }
+
+    .cover .bx:hover {
+        cursor: pointer;
+    }
+
+    .cover .bx-chevron-left {
+        left: 0;
+    }
+
+    .cover .bx-chevron-right {
+        right: 0;
+    }
+
+    .cover img {
+        width: inherit;
+        position: absolute;
+    }
+</style>

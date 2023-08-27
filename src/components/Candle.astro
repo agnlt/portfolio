@@ -1,0 +1,125 @@
+<!-- stolen from here: https://codepen.io/pablolsd/pen/KKxxpZg -->
+
+<div class="holder">
+    <div class="candle">
+        <div class="thread"></div>
+        <div class="flame"></div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --width: 30px;
+        --height: 250px;
+    }
+
+    .holder {
+        width: var(--width);
+        height: var(--height);
+        position: absolute;
+        top: 10px;
+        left: 100px;
+        z-index: 999;
+    }
+
+    .holder *, .holder *:before, .holder *:after {
+        position: absolute;
+        content: "";
+    }
+
+    .candle {
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 150px / 40px;
+        box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4), 0 30px 80px 2px rgba(0, 0, 0, 0.5);
+        background: #190f02;
+        background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
+    }
+
+    .candle:before {
+        width: 98%;
+        height: 40px;
+        border-radius: 50%;
+        translate: 0 -10px;
+        border: 2px solid #d47401;
+        background: #b86409;
+        background: radial-gradient(#ffef80, #b86409 60%);
+        background: radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);
+    }
+
+    .candle:after {
+        width: 34px;
+        height: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        top: 14px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+        background: radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);
+    }
+
+    .thread {
+        width: 6px;
+        height: 36px;
+        top: -17px;
+        left: 50%;
+        z-index: 1;
+        border-radius: 40% 40% 0 0;
+        transform: translateX(-50%);
+        background: #121212;
+        background: -webkit-gradient(linear, left top, left bottom, from(#d6994a), color-stop(#4b232c), color-stop(#121212), color-stop(black), color-stop(90%, #e8bb31));
+        background: linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);
+    }
+
+    .flame {
+        width: 24px;
+        height: 50px;
+        left: 50%;
+        transform-origin: 50% 100%;
+        transform: translateX(-50%);
+        bottom: 100%;
+        border-radius: 50% 50% 20% 20%;
+        background: rgba(255, 255, 255, 1);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(80%, white), to(transparent));
+        background: linear-gradient(white 80%, transparent);
+        animation: moveFlame 6s linear infinite, enlargeFlame 5s linear infinite;
+    }
+
+    .flame:before {
+        width: 100%;
+        height: 100%;
+        border-radius: 50% 50% 20% 20%;
+        box-shadow: 0 0 15px 0 rgba(247, 93, 0, .4), 0 -6px 4px 0 rgba(247, 128, 0, .7);
+    }
+
+    @-webkit-keyframes moveFlame {
+        0%, 100% {
+            transform: translateX(-50%) rotate(-2deg);
+        }
+
+        50% {
+            transform: translateX(-50%) rotate(2deg);
+        }
+    }
+
+    @keyframes moveFlame {
+        0%, 100% {
+            transform: translateX(-50%) rotate(-2deg);
+        }
+
+        50% {
+            transform: translateX(-50%) rotate(2deg);
+        }
+    }
+
+    @-webkit-keyframes enlargeFlame {
+        0%, 100% {
+            height: 80px;
+        }
+
+        50% {
+            height: 100px;
+        }
+    }
+</style>

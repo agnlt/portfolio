@@ -1,0 +1,109 @@
+<div class="book">
+    <div class="pages">
+        <div class="page page-left"></div>
+        <span class="separator"></span>
+        <div class="page page-right"></div>
+    </div>
+</div>
+
+
+<style>
+    :root {
+        --old-paper: hsl(36 26% 76%);
+        --old-paper-dark: hsl(36 26% 70%);
+        --perspective: 2000px;
+    }
+
+    .book {
+        height: 100%;
+        width: 80%;
+        scale: 0.95;
+        translate: 13%;
+    }
+
+    .pages {
+        --pages-offset: -3.92rem;
+        /* edit the value below depending on the book size */
+        --pages-width: 106.14%;
+        --pages-height: 110px;
+        --pages-angle: 90deg;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: var(--perspective);
+    }
+
+    /* top and bottom rectangles */
+    .pages::after {
+        position: absolute;
+        content: "";
+        width: var(--pages-width);
+        height: var(--pages-height);
+        background: var(--old-paper-dark);
+        bottom: var(--pages-offset);
+        transform: rotateX(var(--pages-angle));
+        border-right: 1px solid #000;
+        border-left: 1px solid #000;
+    }
+
+    .pages::before {
+        content: "";
+        position: absolute;
+        background: var(--old-paper-dark);
+        width: var(--pages-width);
+        height: var(--pages-height);
+        top: var(--pages-offset);
+        transform: rotateX(calc(360deg - var(--pages-angle)));
+        z-index: 999;
+        border-right: 1px solid #000;
+        border-left: 1px solid #000;
+    }
+
+    .page {
+        --child-width: 100px;
+        --child-height: 102%;
+        --gap: -4.2rem;
+        --top: -8px;
+        --angle: 80deg;
+        height: calc(100% - 3rem);
+        width: calc(100% - 21rem);
+        position: relative;
+        background: var(--old-paper);
+        transform: perspective(200px) translateZ(10px);
+        perspective: var(--perspective);
+    }
+
+    /* left and right rectangles */
+    .page-left::before {
+        content: "";
+        position: absolute;
+        background: var(--old-paper-dark);
+        height: var(--child-height);
+        width: var(--child-width);
+        left: var(--gap);
+        top: var(--top);
+        transform: rotateY(var(--angle));
+    }
+
+    .page-right::before {
+        content: "";
+        position: absolute;
+        background: var(--old-paper-dark);
+        height: var(--child-height);
+        width: var(--child-width);
+        right: var(--gap);
+        top: var(--top);
+        transform: rotateY(calc(360deg - var(--angle)));
+    }
+
+    .separator {
+        position: absolute;
+        translate: 0;
+        height: 90%;
+        right: 50%;
+        box-shadow: -10px 0 20px 30px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+</style>

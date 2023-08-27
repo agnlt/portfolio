@@ -1,0 +1,52 @@
+<div class="desk-container">
+    <div class="desk">
+        <slot />
+    </div>
+    <div class="feet">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --desk-offset: 4rem;
+        --width: 10rem;
+        --color: #70401d;
+    }
+
+    .desk-container {
+        perspective: 2000px;
+    }
+
+    .desk {
+        width: calc(100vw - var(--desk-offset));
+        height: calc(100vh - var(--desk-offset));
+        background-color: var(--color);
+        border-radius: 6px;
+        transform: rotateX(40deg) rotateZ(0deg);
+        box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+        position: relative;
+        z-index: 999;
+    }
+
+    .feet {
+        position: absolute;
+        --up: 50%
+    }
+
+    .left,
+    .right {
+        width: var(--width);
+        height: 100px;
+        background-color: var(--color);
+    }
+
+    .right {
+        translate: calc(100vw - var(--desk-offset) - 10rem) calc(-1 * (100% + var(--up)));
+    }
+
+    .left {
+        translate: 0 calc(-1 * var(--up));
+    }
+</style>

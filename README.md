@@ -13,5 +13,3 @@ cd portfolio
 npm i
 npm run dev
 ```
-
-# New owner
